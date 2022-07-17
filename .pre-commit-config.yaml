@@ -10,12 +10,6 @@ repos:
         exclude: ^env/
     -   id: debug-statements
         exclude: ^env/
-    -   id: double-quote-string-fixer
-        exclude: ^env/
-    -   id: name-tests-test
-        exclude: ^env/
-    -   id: requirements-txt-fixer
-        exclude: ^env/
 -   repo: https://github.com/psf/black
     rev: '22.6.0'
     hooks:
@@ -38,7 +32,7 @@ repos:
     rev: v3.8.1
     hooks:
     -   id: reorder-python-imports
-        exclude: ^(pre_commit/resources/|testing/resources/python3_hooks_repo/)
+        exclude: ^(pre_commit/resources/|testing/resources/python3_hooks_repo/|env/)
         args: [--py37-plus, --add-import, 'from __future__ import annotations']
 -   repo: https://github.com/asottile/add-trailing-comma
     rev: v2.2.3
@@ -52,20 +46,14 @@ repos:
     -   id: pyupgrade
         exclude: ^env/
         args: [--py37-plus]
--   repo: https://github.com/pre-commit/mirrors-autopep8
-    rev: v1.6.0
-    hooks:
-    -   id: autopep8
-        exclude: ^env/
 -   repo: https://github.com/PyCQA/flake8
     rev: 4.0.1
     hooks:
     -   id: flake8
-        exclude: ^env/
+        exclude: ^(env/|$/migrations/)
 -   repo: https://github.com/pre-commit/mirrors-mypy
     rev: v0.961
     hooks:
     -   id: mypy
         additional_dependencies: [types-all]
         exclude: ^testing/resources/
-        exclude: ^env/
