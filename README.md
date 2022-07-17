@@ -1,5 +1,5 @@
 # boilerplate
-Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway projects with sample pytest setup.
+Standard .gitignore and .pre-commit-config.yaml files with sample pytest setup for new BrandSafway projects.
 
 #### Author
 Joshua Fink, joshfink@umich.edu
