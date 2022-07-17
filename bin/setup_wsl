@@ -39,7 +39,7 @@ sleep 1
 # Check number of command-line arguments
 if [ $# -ne 1 ]; then
     {
-    echo ERROR: Command-line arguments must be of the form: ./bin/setup_wsl [GITHUB_REPO_LINK]
+    echo ERROR: Command-line arguments must be of the form: ./bin/setup_wsl [GITHUB_REPO_HTTPS_URL]
 	exit 1
     } 2> /dev/null
 fi
