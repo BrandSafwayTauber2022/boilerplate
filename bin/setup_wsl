@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# beefy_setup
+# setup
 #
 # Initializes standard BrandSafway repository environment
 
@@ -38,26 +38,25 @@ if [ $# -ne 1 ]; then
     } 2> /dev/null
 fi
 
-{
-    echo STATUS: Check of input arguments complete
-    echo STATUS: Ensuring git is installed, prepare to enter ADMIN password
-    echo
-    echo
-} 2> /dev/null # Only print text, not echo commands
+# Check if command line input is git repository
+git ls-remote $1
 
-# Install command line git
-sudo apt-get install git
+FOLDER_NAME=$(echo $1 | tr "/" .)
+FOLDER_NAME=$(echo $FOLDER_NAME | tr "." ":")
+FOLDER_NAME=$(echo $FOLDER_NAME | awk -F: '{print $(NF-1)}')
 
-{
-    echo
-    echo
-    echo STATUS: Git installation verified
-    echo STATUS: Initializing empty repository
-    echo
-    echo
-} 2> /dev/null # Only print text, not echo commands
+mkdir ../$FOLDER_NAME
+
+cd ..
+cp -r steve/. $FOLDER_NAME
+
+cd $FOLDER_NAME
 
 rm -rf .git
+rm -rf env
+git init
+
+# Set folder up for new git repo
 git init
 
 # Set up virtual environment
@@ -88,11 +87,10 @@ pip freeze > requirements.txt
 pytest tests/
 
 git add .
-git commit -m "First commit"
-git commit -m "First commit"
+git commit -m "BrandSafway boilerplate setup"
 git branch -M main
 git remote add origin $1
-git push -u origin main
+git push -u origin main --force
 
 # Print to shell
 {
