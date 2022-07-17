@@ -15,88 +15,166 @@
 # See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
 set -Eeuo pipefail
 
-# Print commands
-set -x
+echo
+echo BrandSafway GitHub Repository Setup
+echo By Joshua Fink, joshfink@umich.edu
+echo
+echo
 
-# Print to terminal
-{
-    echo
-    echo BrandSafway GitHub Repository Setup
-    echo By Joshua Fink, joshfink@umich.edu
-    echo
-    echo
-    echo STATUS: Begin check of input arguments
-    echo
-    echo
-} 2> /dev/null # Only print text, not echo commands
+echo STATUS: Pull latest BrandSafway boilerplate updates
+sleep 1
+echo
+sleep 1
+echo
+sleep 1
+echo INPUT: Login into GitHub account below
+git pull https://github.com/BrandSafwayTauber2022/boilerplate.git
+echo
+echo
+echo STATUS: Latest BrandSafway boilerplate repository updates pulled successfully
+sleep 1
 
-# Check number
+echo STATUS: Begin check of command-line arguments
+sleep 1
+# Check number of command-line arguments
 if [ $# -ne 1 ]; then
     {
-    echo ERROR: Please specify new GitHub repository. Exiting program
+    echo ERROR: Command-line arguments must be of the form: ./bin/setup_wsl [GITHUB_REPO_LINK]
 	exit 1
     } 2> /dev/null
 fi
+echo STATUS: Check of command-line arguments complete
+sleep 1
 
 # Check if command line input is git repository
+echo STATUS: Begin verification of GitHub repository location
+sleep 1
+echo
+sleep 1
+echo
+sleep 1
+echo INPUT: Login into GitHub account below
 git ls-remote $1
+sleep 1
+echo
+sleep 1
+echo
+sleep 1
+echo STATUS: GitHub repository location verification complete
+sleep 1
 
+echo STATUS: Begin creation of empty new folder for new BrandSafway GitHub project
+sleep 1
 FOLDER_NAME=$(echo $1 | tr "/" .)
 FOLDER_NAME=$(echo $FOLDER_NAME | tr "." ":")
 FOLDER_NAME=$(echo $FOLDER_NAME | awk -F: '{print $(NF-1)}')
-
 mkdir ../$FOLDER_NAME
+echo STATUS: Creation of empty new folder, $FOLDER_NAME, for new BrandSafway GitHub project complete
+sleep 1
 
-cd ..
-cp -r boilerplate/. $FOLDER_NAME
-
-cd $FOLDER_NAME
-
-rm -rf .git
-rm -rf bin
-rm -rf env
-
-git init
-
-# Set up virtual environment
-python3 -m venv env
-source env/bin/activate &> /dev/null
-
-# Install code quality control and formatting service
-pip install pre-commit
-pre-commit install
-
-# Install testing service
-pip install pytest
-
-# Save environment requirements
-pip freeze > requirements.txt
-
-# Print to shell
-{
+echo STATUS: Begin final confirmation of process
+sleep 1
+echo
+sleep 1
+echo
+sleep 1
+echo INPUT: Respond to confirmation prompt below
+read -p "This operation will replace .gitignore, .pre-commit-config.yaml, and any Python virtual environment in $1. I AFFIRM THIS REPOSITORY IS EMPTY. Continue? <y/N> " prompt
+if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+then
+    sleep 1
     echo
+    sleep 1
     echo
-    echo STATUS: Python 3 virtual environment setup complete
-    echo STATUS: Begin running pytest test cases
+    sleep 1
+    echo STATUS: Working...
+    sleep 1
     echo
+    sleep 1
     echo
-} 2> /dev/null
+    sleep 1
+    echo INPUT: Respond to confirmation prompt below
+    read -p "Last chance to change your mind. Continue? <y/N> " prompt
+    if [[ $prompt == "y" || $prompt == "Y" || $prompt == "yes" || $prompt == "Yes" ]]
+    then
+        sleep 1
+        echo
+        sleep 1
+        echo
+        sleep 1
+        echo STATUS: Final confirmation of process complete
+        sleep 1
+        echo STATUS: Begin construction of boilerplate environment
+        sleep 1
+        # Print commands
+        set -x
 
-# Ensure testing works
-pytest tests/
+        cd ..
+        cp -r boilerplate/. $FOLDER_NAME
 
-git add .
-git commit -m "BrandSafway boilerplate setup"
-git commit -m "BrandSafway boilerplate setup"
+        cd $FOLDER_NAME
 
-git branch -M main
-git remote add origin $1
-git push -u origin main --force
+        rm -rf .git
+        rm -rf bin
+        rm -rf env
 
-# Print to shell
-{
-    echo
-    echo
-    echo STATUS: All set! Refer to README.md for documentation
-    echo
-}  2> /dev/null
+        git init
+
+        # Set up virtual environment
+        python3 -m venv env
+        source env/bin/activate &> /dev/null
+
+        # Install code quality control and formatting service
+        pip install pre-commit
+        pre-commit install
+
+        # Install testing service
+        pip install pytest
+
+        # Save environment requirements
+        pip freeze > requirements.txt
+
+        # Print to shell
+        {
+            echo STATUS: Construction of boilerplate environment complete
+            sleep 1
+            echo STATUS: Begin running pytest test cases
+            sleep 1
+        } 2> /dev/null
+
+        # Ensure testing works
+        pytest tests/
+
+        git add .
+        git commit -m "BrandSafway boilerplate setup"
+
+        git branch -M main
+        git remote add origin $1
+
+        {
+            echo STATUS: Ready to push boilerplate code to GitHub repository
+            sleep 1
+            echo
+            sleep 1
+            echo
+            sleep 1
+            echo INPUT: Login into GitHub account below
+            echo ===============================================================
+            echo WARNING: TO ABORT, press CTRL + C. Upon push, changes are final.
+            echo ===============================================================
+        } 2> /dev/null
+        git push -u origin main --force
+
+        # Print to shell
+        {
+            echo
+            echo
+            echo STATUS: All set! Refer to README.md for documentation
+            echo
+        }  2> /dev/null
+    else
+        exit 0
+    fi
+else
+  exit 0
+fi
