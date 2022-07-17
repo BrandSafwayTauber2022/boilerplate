@@ -4,7 +4,7 @@ joshfink@umich.edu
 
 
 # boilerplate
-Standard files to add into new GitHub repositories
+Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway projects. Also contains a sample pytest setup.
 
 ## Quick Start
 To get started quickly, follow these simple steps to run an automated bash script:
