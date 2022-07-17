@@ -6,16 +6,19 @@ joshfink@umich.edu
 # boilerplate
 Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway projects. Also contains a sample pytest setup.
 
+## Latest boilerplate updates
+Run  <code>  git pull </code>  in an existing boilerplate repository to get the latest boilerplate updates.
+
 ## Quick Start
 To get started quickly, follow these simple steps to run an automated bash script:
 
-### 1. Clone the boilerplate repository
+### 1. Clone boilerplate repository
 <p><code>  git clone https://github.com/BrandSafwayTauber2022/boilerplate.git  </code></p>
 
-### 2. Enter the boilerplate directory
+### 2. Enter boilerplate directory
 <p><code>  cd boilerplate  </code></p>
 
-### 3. Make the automated bash script executable
+### 3. Make automated bash script executable
 <p><code>  chmod +x bin/setup_wsl  </code></p>
 
 ### 4. Create empty GitHub repository for new project and copy URL
@@ -30,6 +33,32 @@ Copy the HTTPS url in "Quick setup". This HTTPS url will placed in lieu of  <cod
 ### 5. Run bash script and follow command-line prompts
 <p><code>  ./bin/setup_wsl [GITHUB_REPO_HTTPS_URL] </code></p>
 
+Note: Some of the command-line prompts are intentionally scary, but if  <code>[GITHUB_REPO_HTTPS_URL]</code>  is empty there will be no issues :)
+
 #### Example 
 <p><code>  ./bin/setup_wsl https://github.com/BrandSafwayTauber2022/example.git </code></p>
 
+## .gitignore
+All directories and files listed in this file are ignored when pushing to .git. This file ensures <code>env/</code> directory (where virtual environments are stored) do not get pushed to GitHub. While this would not cause issues if the GitHub repository was accessed by one computer only, it causes nightmares if the repository is accessed among multiple computers. It is advised to not modify this file.
+
+## .pre-commit-config.yaml
+Upon setup, this modifies .git/hooks/, and it contains a series of code quality checks. If any of these tests fail, local updates will not push to GitHub. To push to GitHub, fix issues noted on the command line, save the fixed files, and run  <code> git add . </code>  and  <code> git commit -m [UPDATE_MESSAGE_HERE] </code>  again until all are "PASSED" or "SKIPPED". Some of the pre-commit hooks actually fix the code for you, so sometimes simply re-running <code> git add . </code>  and  <code> git commit -m [UPDATE_MESSAGE_HERE] </code>  will do the trick. To use alone in a existing project, run the following commands (assuming your virtual environment is installed):
+
+<p><code>  pip install pre-commit  </code></p>
+<p><code>  pre-commit install  </code></p>
+
+Then, run the following command to ensure your current files meet pre-commit standards:
+<p><code>  pre-commit run --all-files  </code></p>
+
+Note: The autoformatting may not produce the ideal format in every single case. However, by formatting them with these opinionated formatters, it will make BrandSafway code on the aggregate more readable.
+
+Full documentation can be found here: https://pre-commit.com/
+
+## pytest
+A sample pytest setup is provided in the boilerplate code. Basic things to know:
+
+1) The tests/ folder must have an empty  <code> __init__.py </code> file.
+2) Test classes must start with "Test", and test functions must start with "test_". Leave tests explicitly in <code> tests/ </code>
+3) Run pytest on the command line in the root of the repository using the following command: <code> pytest tests/ </code>
+
+Full documentation can be found here: https://docs.pytest.org/en/7.1.x/
