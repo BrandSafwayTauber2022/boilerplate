@@ -1,9 +1,9 @@
+# boilerplate
+Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway projects with sample pytest setup.
+
 #### Author
 Joshua Fink
 joshfink@umich.edu
-
-# boilerplate
-Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway projects with sample pytest setup.
 
 ## Latest boilerplate updates
 Run  <code>  git pull </code>  in an existing boilerplate repository to get the latest boilerplate updates.
