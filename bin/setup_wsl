@@ -48,15 +48,14 @@ FOLDER_NAME=$(echo $FOLDER_NAME | awk -F: '{print $(NF-1)}')
 mkdir ../$FOLDER_NAME
 
 cd ..
-cp -r steve/. $FOLDER_NAME
+cp -r boilerplate/. $FOLDER_NAME
 
 cd $FOLDER_NAME
 
 rm -rf .git
+rm -rf bin
 rm -rf env
-git init
 
-# Set folder up for new git repo
 git init
 
 # Set up virtual environment
@@ -88,6 +87,8 @@ pytest tests/
 
 git add .
 git commit -m "BrandSafway boilerplate setup"
+git commit -m "BrandSafway boilerplate setup"
+
 git branch -M main
 git remote add origin $1
 git push -u origin main --force
