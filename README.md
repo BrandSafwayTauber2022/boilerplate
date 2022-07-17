@@ -48,7 +48,7 @@ Upon setup, this modifies .git/hooks/, and it contains a series of code quality 
 Then, run the following command to ensure your current files meet pre-commit standards:
 <p><code>  pre-commit run --all-files  </code></p>
 
-Note: The autoformatting may not produce the ideal format in every single case. However, by formatting them with these opinionated formatters, it will make BrandSafway code on the aggregate more readable.
+Note: The autoformatting may not produce the ideal format in every single case. However, by using opinionated formatters, it will make BrandSafway code on the aggregate more readable.
 
 Full documentation can be found here: https://pre-commit.com/
 
