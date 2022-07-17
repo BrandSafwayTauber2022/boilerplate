@@ -5,7 +5,7 @@ Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway pr
 Joshua Fink, joshfink@umich.edu
 
 ## Latest boilerplate updates
-Run  <code>  git pull </code>  in an existing boilerplate repository to get the latest boilerplate updates.
+Run  <code>git pull</code>  in an existing boilerplate repository to get the latest boilerplate updates.
 
 ## Quick Start
 To get started quickly, follow these simple steps to run an automated bash script:
