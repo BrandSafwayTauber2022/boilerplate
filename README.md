@@ -5,7 +5,7 @@ Standard .gitignore and .pre-commit-config.yaml files with sample pytest setup f
 Joshua Fink, joshfink@umich.edu
 
 ## Latest boilerplate Updates
-Run  <code>git pull</code>  in an existing boilerplate repository to get the latest boilerplate updates.
+Run  <code>git pull</code>  in an existing cloned boilerplate repository to get the latest boilerplate updates.
 
 ## Quick Start
 To get started quickly, follow these simple steps to run an automated bash script:
