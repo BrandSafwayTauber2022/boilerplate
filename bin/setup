@@ -1,0 +1,57 @@
+#!/bin/bash
+#
+# setup
+
+
+# NOTE: If script fails to run, in root folder run chmod +x setup
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+# Print commands
+set -x
+
+{
+    echo
+    echo BrandSafway GitHub Repository Setup
+    echo By Joshua Fink, joshfink@umich.edu
+    echo
+    echo
+    echo Begin setup of Python3 virtual environment
+    echo
+    echo
+} 2> /dev/null
+
+# Set up virtual environment
+python3 -m venv env
+source env/bin/activate &> /dev/null
+
+# Install quality control service
+pip install pre-commit
+pre-commit install
+
+# Install testing service
+pip install pytest
+
+# Save environment requirements
+pip freeze > requirements.txt
+
+{
+    echo
+    echo
+    echo Setup of Python 3 virtual environment complete
+    echo Begin test run of pytest test cases
+    echo
+    echo
+} 2> /dev/null
+
+# Ensure testing works
+pytest tests/
+
+{
+    echo
+    echo
+    echo All set! Refer to README.md for further documentation
+    echo
+}  2> /dev/null
