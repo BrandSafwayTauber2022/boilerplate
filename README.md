@@ -4,7 +4,7 @@ Standard .gitignore and .pre-commit-config.yaml files to use with BrandSafway pr
 #### Author
 Joshua Fink, joshfink@umich.edu
 
-## Latest boilerplate updates
+## Latest boilerplate Updates
 Run  <code>git pull</code>  in an existing boilerplate repository to get the latest boilerplate updates.
 
 ## Quick Start
@@ -36,10 +36,12 @@ Note: Some of the command-line prompts are intentionally scary, but if  <code>[G
 #### Example 
 <p><code>  ./bin/setup_wsl https://github.com/BrandSafwayTauber2022/example.git </code></p>
 
-## .gitignore
+## Concise Documentation
+
+### .gitignore
 All directories and files listed in this file are ignored when pushing to .git. This file ensures <code>env/</code> directory (where virtual environments are stored) do not get pushed to GitHub. While this would not cause issues if the GitHub repository was accessed by one computer only, it causes nightmares if the repository is accessed among multiple computers. It is advised to not modify this file.
 
-## .pre-commit-config.yaml
+### .pre-commit-config.yaml
 Upon setup, this modifies .git/hooks/, and it contains a series of code quality checks. If any of these tests fail, local updates will not push to GitHub. To push to GitHub, fix issues noted on the command line, save the fixed files, and run  <code> git add . </code>  and  <code> git commit -m [UPDATE_MESSAGE_HERE] </code>  again until all are "PASSED" or "SKIPPED". Some of the pre-commit hooks actually fix the code for you, so sometimes simply re-running <code> git add . </code>  and  <code> git commit -m [UPDATE_MESSAGE_HERE] </code>  will do the trick. To use alone in a existing project, run the following commands (assuming your virtual environment is installed):
 
 <p><code>  pip install pre-commit  </code></p>
@@ -52,7 +54,7 @@ Note: The autoformatting may not produce the ideal format in every single case. 
 
 Full documentation can be found here: https://pre-commit.com/
 
-## pytest
+### pytest
 A sample pytest setup is provided in the boilerplate code. Basic things to know:
 
 1) The  <code> tests/ </code>  folder must have an empty  <code> \_\_init\_\_.py </code> file.
