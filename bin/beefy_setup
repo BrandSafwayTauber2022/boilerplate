@@ -1,0 +1,103 @@
+#!/bin/bash
+#
+# beefy_setup
+#
+# Initializes standard BrandSafway repository environment
+
+# BrandSafway GitHub Repository Setup
+# Joshua Fink, joshfink@umich.edu
+
+# NOTE: If script fails to run, in root folder run chmod +x setup
+#       In worst-case scenario, simply run the commands specified
+#       in README.md
+
+# Stop on errors
+# See https://vaneyckt.io/posts/safer_bash_scripts_with_set_euxo_pipefail/
+set -Eeuo pipefail
+
+# Print commands
+set -x
+
+# Print to terminal
+{
+    echo
+    echo BrandSafway GitHub Repository Setup
+    echo By Joshua Fink, joshfink@umich.edu
+    echo
+    echo
+    echo STATUS: Begin check of input arguments
+    echo
+    echo
+} 2> /dev/null # Only print text, not echo commands
+
+# Check number
+if [ $# -ne 1 ]; then
+    {
+    echo ERROR: Please specify new GitHub repository. Exiting program
+	exit 1
+    } 2> /dev/null
+fi
+
+{
+    echo STATUS: Check of input arguments complete
+    echo STATUS: Ensuring git is installed, prepare to enter ADMIN password
+    echo
+    echo
+} 2> /dev/null # Only print text, not echo commands
+
+# Install command line git
+sudo apt-get install git
+
+{
+    echo
+    echo
+    echo STATUS: Git installation verified
+    echo STATUS: Initializing empty repository
+    echo
+    echo
+} 2> /dev/null # Only print text, not echo commands
+
+rm -rf .git
+git init
+
+# Set up virtual environment
+python3 -m venv env
+source env/bin/activate &> /dev/null
+
+# Install code quality control and formatting service
+pip install pre-commit
+pre-commit install
+
+# Install testing service
+pip install pytest
+
+# Save environment requirements
+pip freeze > requirements.txt
+
+# Print to shell
+{
+    echo
+    echo
+    echo STATUS: Python 3 virtual environment setup complete
+    echo STATUS: Begin running pytest test cases
+    echo
+    echo
+} 2> /dev/null
+
+# Ensure testing works
+pytest tests/
+
+git add .
+git commit -m "First commit"
+git commit -m "First commit"
+git branch -M main
+git remote add origin $1
+git push -u origin main
+
+# Print to shell
+{
+    echo
+    echo
+    echo STATUS: All set! Refer to README.md for documentation
+    echo
+}  2> /dev/null
