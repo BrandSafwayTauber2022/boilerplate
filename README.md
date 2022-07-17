@@ -55,8 +55,8 @@ Full documentation can be found here: https://pre-commit.com/
 ## pytest
 A sample pytest setup is provided in the boilerplate code. Basic things to know:
 
-1) The tests/ folder must have an empty  <code> \_\_init\_\_.py </code> file.
-2) Test classes must start with "Test", and test functions must start with "test_". Leave tests explicitly in <code> tests/ </code>
+1) The  <code> tests/ </code>  folder must have an empty  <code> \_\_init\_\_.py </code> file.
+2) Test classes must start with "Test", and test functions must start with "test_". Leave all test files explicitly in <code> tests/ </code>.
 3) Run pytest on the command line in the root of the repository using the following command: <code> pytest tests/ </code>
 
 Full documentation can be found here: https://docs.pytest.org/en/7.1.x/
