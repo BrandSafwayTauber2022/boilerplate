@@ -35,7 +35,7 @@ Copy the HTTPS url in "Quick setup". This HTTPS url will placed in lieu of  <cod
 
 Note: Some of the command-line prompts are intentionally scary, but if  <code>[GITHUB_REPO_HTTPS_URL]</code>  is empty there will be no issues :)
 
-#### Example 
+#### Example
 <p><code>  ./bin/setup_wsl https://github.com/BrandSafwayTauber2022/example.git </code></p>
 
 ## Concise Documentation
