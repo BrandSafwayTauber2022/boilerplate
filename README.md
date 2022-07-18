@@ -8,7 +8,7 @@ Joshua Fink, joshfink@umich.edu
 Run  <code>git pull</code>  in an existing cloned boilerplate repository to get the latest boilerplate updates.
 
 ## Quick Start
-To get started quickly, follow these simple steps to run an automated bash script:
+To get started quickly, follow these simple steps to run a bash script that will install all of the boilerplate packages in an empty repository automatically. If the bash script fails for any reason, simply navigate to <code>bin/setup_wsl</code> and enter the commands directly into a WSL terminal.
 
 ### 1. Clone boilerplate repository
 <p><code>  git clone https://github.com/BrandSafwayTauber2022/boilerplate.git  </code></p>
