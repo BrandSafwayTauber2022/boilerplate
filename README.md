@@ -1,3 +1,5 @@
+Note: Repository is currently read-only to protect contents.
+
 # boilerplate
 Standard .gitignore and .pre-commit-config.yaml files with sample pytest setup for new BrandSafway projects.
 
